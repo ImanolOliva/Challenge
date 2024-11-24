@@ -4,7 +4,7 @@ Plataforma de servicios de integracion - challenge
 ## Descripción
 
 Esta API  permite crear un modulo transaciones en las cuales el usuario podra crear y leer las diferentes 
-transacciones a travez de peticiones HTTP 
+transacciones a travez de peticiones HTTP. La API Se encuentra dockerizada y deployada en Render. 
 
 ## Requisitos previos
 
@@ -22,7 +22,7 @@ transacciones a travez de peticiones HTTP
    
 4. **Otras herramientas**:
     - `Postman`
-
+    - `Docker`
 ## Diseño y Arquitectura de la API
 La entidad Transaction es la clase base que representa una transacción general,
 pero se utiliza un enfoque de herencia para modelar diferentes tipos de transacciones. 
@@ -37,9 +37,6 @@ Este enfoque optimiza el uso de la base de datos,y  Al mismo tiempo puede
 gestionar diferentes tipos de transacciones de forma flexible y estructurada.
 Este diseño con herencia permite manejar distintos tipos de transacciones en el
 sistema de manera eficiente, manteniendo la simplicidad y la flexibilidad al mismo tiempo.
-
-
-
 
 
 
@@ -99,13 +96,13 @@ La arquitectura de la base de datos está basada en un modelo relacional. Aquí 
 `git clone https://github.com/ImanolOliva/challenge.git`
 
 ### 2. Ejecutar la API
-La app se ejecuta en el puerto 8080 y automaticamente
+La app se ejecuta y automaticamente
 se levantara la base de datos en memoria que se utiliza para el proyecto.
 No requiere configuracion adicional. 
 
 ### 3.Rutas de la API
 POST /api/createTransaction : Crear transacciones (Soporta una o varias a la ves)
-curl --location 'http://localhost:8080/api/createTransaction' \
+curl --location 'https://challenge-y0jp.onrender.com/api/createTransaction' \
 --header 'Content-Type: application/json' \
 --data '[
 {
@@ -132,7 +129,7 @@ curl --location 'http://localhost:8080/api/createTransaction' \
     }
 ]'
 ### POST /api/createTransactionError: Crea transacciones en estado 'ERROR'
-curl --location 'http://localhost:8080/api/createTransactionError' \
+curl --location 'https://challenge-y0jp.onrender.com/api/createTransactionError' \
 --header 'Content-Type: application/json' \
 --data '[
 {
@@ -159,20 +156,20 @@ curl --location 'http://localhost:8080/api/createTransactionError' \
     }
 ]'
 ### POST /api/reversTransactions: Toma las transacciones en estado 'ERROR' y actualiza su estado a 'COMPLETED'
-curl --location --request POST 'http://localhost:8080/api/reversTransactions'
+curl --location --request POST 'https://challenge-y0jp.onrender.com/api/reversTransactions'
 
 
 ### GET  /api/paymentMethods: Obtiene los tipos de transacciones que admite la api
-curl --location 'http://localhost:8080/api/paymentMethods'
+curl --location 'https://challenge-y0jp.onrender.com/api/paymentMethods'
 ### GET  /api/coins: Obtiene los tipos de monedas que admite la api
-curl --location 'http://localhost:8080/api/coins'
+curl --location 'https://challenge-y0jp.onrender.com/api/coins'
 ### GET  /api/statusTransaction: Obtiene el estado de las transacciones
-curl --location 'http://localhost:8080/api/status/7'
+curl --location 'https://challenge-y0jp.onrender.com/api/status/7'
 ### GET  /api/transactions : Obtiene las transacciones por CUIL, admite filtros
-curl --location 'http://localhost:8080/api/transactions/20418949458?startDate=2024-11-19&endDate=2024-11-25&page=0&size=20'
+curl --location 'https://challenge-y0jp.onrender.com/api/transactions/20418949458?startDate=2024-11-19&endDate=2024-11-25&page=0&size=20'
 ### GET  /api/transactionsHistory: Obtiene el historia de transacciones, admite filtros
-curl --location 'http://localhost:8080/api/transactionsHistory?startDate=2024-11-18&endDate=2024-11-25'
+curl --location 'https://challenge-y0jp.onrender.com/transactionsHistory?startDate=2024-11-18&endDate=2024-11-25'
 ### GET  /api/transactionsHistoryStatus: Obtiene el historial de transacciones por estado, admite filtros
-curl --location 'http://localhost:8080/api/transactionsHistoryStatus?description=ERROR'
+curl --location 'https://challenge-y0jp.onrender.com/api/transactionsHistoryStatus?description=ERROR'
 
 
