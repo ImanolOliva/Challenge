@@ -82,13 +82,25 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.3.5</version> <!-- Usa la versión correcta -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal> <!-- Reempaquetar el JAR para incluir las dependencias necesarias -->
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.1.0</version>
 				<configuration>
 					<archive>
 						<manifestEntries>
-							<Main-Class>com.challenge.core.CoreApplication</Main-Class> <!-- Reemplaza con tu clase principal -->
+							<Main-Class>com.challenge.core.CoreApplication</Main-Class> <!-- Tu clase principal -->
 						</manifestEntries>
 					</archive>
 				</configuration>
@@ -119,7 +131,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-
 	</build>
+
 
 </project>

@@ -1,13 +1,13 @@
 # Usa una imagen base con OpenJDK 17
 FROM openjdk:17-jdk-slim AS build
 
-# Instala Maven manualmente
+# Instala Maven
 RUN apt-get update && apt-get install -y maven
 
 # Copia el código fuente al contenedor
 COPY . /app
 
-# Establece el directorio de trabajo
+# Establece el directorio de trabajo en el contenedor
 WORKDIR /app
 
 # Ejecuta Maven para construir la aplicación
@@ -17,7 +17,7 @@ RUN mvn clean install
 FROM openjdk:17-jdk-slim
 
 # Copia el archivo .jar generado desde la etapa de construcción
-COPY --from=build /app/target/core-0.0.1-SNAPSHOT.jar challenge.jar
+COPY --from=build /app/target/core-0.0.1-SNAPSHOT.jar app.jar
 
 # Configura el contenedor para ejecutar la aplicación
-ENTRYPOINT ["java", "-jar", "/challenge.jar"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]
