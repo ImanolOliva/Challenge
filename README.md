@@ -46,19 +46,19 @@ La arquitectura de la base de datos está basada en un modelo relacional. Aquí 
 1. **Transacciones**
    - Tabla: `Transaction`
    - Descripción: Contiene la información de las transacciones.
-   - Campos:
+   - Campos Relevantes:
       - `id`: Identificador único del usuario.
-      - `nombre`: Nombre completo del usuario.
-      - `email`: Correo electrónico del usuario.
+      - `cuil`: Cuil del usuario.
+      - `amount`: Monto de la transacciones.
 
 
 2. **TransaccionesLogError**
     - Tabla: `TransactionLogError`
     - Descripción: Contiene la información de las transacciones fallidas.
-    - Campos:
+    - Campos Relevantes:
         - `id`: Identificador único del usuario.
-        - `nombre`: Nombre completo del usuario.
-        - `email`: Correo electrónico del usuario.
+        - `cuil`: Cuil del usuario.
+        - `amount`: Monto de la transacciones.
 
 3. **Currency**
    - Tabla: `Currency`
